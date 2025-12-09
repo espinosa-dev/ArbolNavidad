@@ -45,7 +45,7 @@ public class Main {
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         tronco = answer == 83 || answer == 115;
         do {
-            System.out.print("Quieres decorarción (S/N): ");
+            System.out.print("Quieres decoración (S/N): ");
             answer = scn.nextLine().charAt(0);
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         decoracion = answer == 83 || answer == 115;

@@ -66,9 +66,7 @@ public class Animated {
 
     static void resetearTriangulo() {
         triangulo = new String[TRIANGULO_BASE.length];
-        for (int i = 0; i < TRIANGULO_BASE.length; i++) {
-            triangulo[i] = TRIANGULO_BASE[i];
-        }
+        System.arraycopy(TRIANGULO_BASE, 0, triangulo, 0, TRIANGULO_BASE.length);
     }
 
     static void menu(){
@@ -87,7 +85,7 @@ public class Animated {
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         tronco = answer == 83 || answer == 115;
         do {
-            System.out.print("Quieres decorarción (S/N): ");
+            System.out.print("Quieres decoración (S/N): ");
             answer = scn.nextLine().charAt(0);
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         decoracion = answer == 83 || answer == 115;
