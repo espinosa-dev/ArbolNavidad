@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Animated {
-    // Códigos de colores ANSI
     public static final String RESET = "\033[0m";
     public static final String RED = "\033[38;5;196m";
     public static final String DARK_RED = "\033[38;5;88m";
@@ -13,12 +12,8 @@ public class Animated {
     public static final String YELLOW = "\033[0;33m";
     public static final String BROWN = "\033[38;5;94m";
     public static final String DARK_GREEN = "\033[1;38;5;28m";
-
     public static String[] colores = {RED, DARK_RED, BLUE, DARK_BLUE, ORANGE, DARK_ORANGE};
-
-    // Plantilla base inmutable del triángulo
     private static final String[] TRIANGULO_BASE = {"*","***","*****","*******"};
-    // Triángulo que usaremos para pintar
     private static String[] triangulo;
 
     private static Scanner scn = new Scanner(System.in);
@@ -135,7 +130,6 @@ public class Animated {
         }
     }
 
-    // Tu método decoration optimizado
     static void decoration(int ramas, boolean star) {
         for (int i = 0; i < ramas; i++) {
             String colorBase;
