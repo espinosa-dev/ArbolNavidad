@@ -19,7 +19,8 @@ public class Animated {
     public static final String BROWN = "\033[38;5;94m";
     public static final String DARK_GREEN = "\033[1;38;5;28m";
     public static final String WHITE_BOLD_BRIGHT = "\033[1;97m";
-    public static final String PURPLE_BOLD_BRIGHT = "\033[1;95m";
+    public static final String WHITE_BACKGROUND_BRIGHT = "\033[0;107m";
+    public static final String GOLD = "\033[1;38;5;220m";
     public static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";
     public static String[] colores = {RED, BLUE, ORANGE};
     private static final String[] TRIANGULO_BASE = {"*","***","*****","*******"};
@@ -270,11 +271,11 @@ public class Animated {
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
-                    System.out.print(RED+"▓"+RESET+"▓"+RED+"▓ ");
+                    System.out.print(DARK_RED+"▓"+RESET+"▓"+DARK_RED+"▓ ");
                     for (int j = 0; j < 3; j++) {
                         System.out.print(BROWN+"*");
                     }
-                    System.out.print(" "+BLUE+"▓"+RESET+"▓"+BLUE+"▓");
+                    System.out.print(" "+DARK_BLUE+"▓"+RESET+"▓"+DARK_BLUE+"▓");
                     System.out.println(RESET);
                 }
             }
@@ -316,8 +317,8 @@ public class Animated {
         for (int i = 0; i < espacios; i++) {
             System.out.print(" ");
         }
-        System.out.println(PURPLE_BOLD_BRIGHT+name);
-        System.out.print(RED_BACKGROUND_BRIGHT+WHITE_BOLD_BRIGHT+"Ctrl + C <- Finalizar el programa (Luego introducir \"S\")");
+        System.out.println(GOLD+name+RESET);
+        System.out.print(RED_BACKGROUND_BRIGHT+WHITE_BOLD_BRIGHT+"Ctrl + C <- Finalizar el programa (Luego introducir \"S\")"+RESET);
     }
 
     static void espacioPantalla(){
