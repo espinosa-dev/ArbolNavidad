@@ -370,7 +370,7 @@ public class Animated {
             System.out.print(" ");
         }
         System.out.println(name);
-        System.out.println("Ctrl + C ⬅ Finalizar el programa (Luego introducir \"S\")");
+        System.out.println("Ctrl + C <- Finalizar el programa (Luego introducir \"S\")");
     }
 
     static void espacioPantalla(){
