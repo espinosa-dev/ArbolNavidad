@@ -1,3 +1,9 @@
+/**
+ * Ejercicio de Arbol de Navidad para ejecutar en consola de Windows
+ * con el siguiente comando: java Animated.java (Debes estar en la ruta del archivo!)
+ * @author Alvaro Espinosa Montesinos
+ */
+
 import java.util.Scanner;
 
 public class Animated {
@@ -39,7 +45,8 @@ public class Animated {
                     Thread.sleep(500);
                 }
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace(); // Salida de error estándar la traza completa del error
+                // mostrando dónde ocurrió y en qué contexto
             }
         } else {
             resetearTriangulo();
@@ -48,6 +55,9 @@ public class Animated {
         }
     }
 
+    /**
+     * Method para limpiar la pantalla y depende del sistema operativo lo realiza de una forma u otra
+     */
     static void limpiarPantalla() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
@@ -64,11 +74,16 @@ public class Animated {
         }
     }
 
+    /**
+     * Reseteo el triangulo para volver a dibujarlo en bucle
+     */
     static void resetearTriangulo() {
         triangulo = new String[TRIANGULO_BASE.length];
         System.arraycopy(TRIANGULO_BASE, 0, triangulo, 0, TRIANGULO_BASE.length);
     }
-
+    /**
+     * Imprime el menú del programa
+     */
     static void menu(){
         char answer;
         System.out.print("Cuantas ramas deseas ingresar: ");
@@ -91,7 +106,11 @@ public class Animated {
         decoracion = answer == 83 || answer == 115;
     }
 
-
+    /**
+     * Imprime las ramas (triangulos)
+     * @param ramas Numero de ramas
+     * @param star Si tiene estrella o no
+     */
     static void ramas(int ramas, boolean star){
         for (int i = 0; i < ramas; i++) {
             if (i == 0){
@@ -127,7 +146,11 @@ public class Animated {
             }
         }
     }
-
+    /**
+     * Imprime la decoracion
+     * @param ramas Numeros de ramas
+     * @param star Si tiene estrella o no
+     */
     static void decoration(int ramas, boolean star) {
         for (int i = 0; i < ramas; i++) {
             String colorBase;
@@ -165,7 +188,10 @@ public class Animated {
             }
         }
     }
-
+    /**
+     * Method para dibujar el tronco
+     * depende del tamaño de la rama dibuja un tronco u otro
+     */
     static void tronco(){
         if (ramas <= 1){
             for (int i = 0; i < 2; i++) {

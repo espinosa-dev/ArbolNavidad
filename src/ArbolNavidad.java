@@ -1,34 +1,75 @@
-import javax.swing.*;
+/**
+ * Ejercicio de Arbol de Navidad
+ * @author Alvaro Espinosa Montesinos
+ */
+
 import java.util.Scanner;
 
-public class Main {
+public class ArbolNavidad {
+    /**
+     * Color default
+     */
     public static final String RESET = "\033[0m";
+    /**
+     * Color: Rojo
+     */
     public static final String RED = "\033[38;5;196m";
-    public static final String DARK_RED = "\033[38;5;88m";
+    /**
+     * Color: Azul
+     */
     public static final String BLUE = "\033[38;5;39m";
-    public static final String DARK_BLUE = "\033[38;5;18m";
+    /**
+     * Color: Naranja
+     */
     public static final String ORANGE = "\033[38;5;208m";
-    public static final String DARK_ORANGE = "\033[38;5;166m";
+    /**
+     * Color: Verde
+     */
     public static final String GREEN = "\033[1;38;5;22m";
+    /**
+     * Color: Amarillo
+     */
     public static final String YELLOW = "\033[0;33m";
+    /**
+     * Color: Brown
+     */
     public static final String BROWN = "\033[38;5;94m";
+    /**
+     * Color: Verde Oscuro
+     */
     public static final String DARK_GREEN = "\033[1;38;5;28m";
-    public static String[] colores = {RED, DARK_RED, BLUE, DARK_BLUE, ORANGE, DARK_ORANGE};
+    /**
+     * Array de los colores para la decoracion
+     */
+    public static String[] colores = {RED, BLUE, ORANGE};
+    /**
+     * Array del triangulo principal
+     */
     private static String[] triangulo = {"*","***","*****","*******"};
+    /**
+     * Scanner para recibir datos del usuario
+     */
     private static Scanner scn = new Scanner(System.in);
     private static int ramas;
     private static boolean estrella = false;
     private static boolean tronco = false;
     private static boolean decoracion = false;
+    private static boolean regalos = false;
     public static void main(String[] args) {
         menu();
         if (decoracion){
             decoration(ramas, estrella);
         } else
             ramas(ramas, estrella);
-        if (tronco)
+        if (tronco && regalos)
+            troncoConRegalos();
+        else
             tronco();
     }
+
+    /**
+     * Imprime el menú del programa
+     */
     static void menu(){
         char answer;
         System.out.print("Cuantas ramas deseas ingresar: ");
@@ -44,12 +85,25 @@ public class Main {
             answer = scn.nextLine().charAt(0);
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         tronco = answer == 83 || answer == 115;
+        if (tronco){
+            do {
+                System.out.print("Quieres regalos (S/N): ");
+                answer = scn.nextLine().charAt(0);
+            } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
+            regalos = answer == 83 || answer == 115;
+        }
         do {
             System.out.print("Quieres decoración (S/N): ");
             answer = scn.nextLine().charAt(0);
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         decoracion = answer == 83 || answer == 115;
     }
+
+    /**
+     * Imprime las ramas (triangulos)
+     * @param ramas Numero de ramas
+     * @param star Si tiene estrella o no
+     */
     static void ramas(int ramas, boolean star){
         for (int i = 0; i < ramas; i++) {
             if (i == 0){
@@ -85,6 +139,12 @@ public class Main {
             }
         }
     }
+
+    /**
+     * Imprime la decoracion
+     * @param ramas Numeros de ramas
+     * @param star Si tiene estrella o no
+     */
     static void decoration(int ramas, boolean star) {
         for (int i = 0; i < ramas; i++) {
             String colorBase;
@@ -122,11 +182,16 @@ public class Main {
                             System.out.print(colorBase + caracter);
                         }
                     }
-                    System.out.println();
+                    System.out.println(RESET);
                 }
             }
         }
     }
+
+    /**
+     * Metodo para dibujar el tronco
+     * depende del tamaño de la rama dibuja un tronco u otro
+     */
     static void tronco(){
         if (ramas <= 1){
             for (int i = 0; i < 2; i++) {
@@ -151,28 +216,106 @@ public class Main {
                 System.out.println(RESET);
             }
         } else if (ramas < 20) {
-            for (int i = 0; i < 5; i++) {
-                int espacios = (triangulo.length - 4) + (ramas - 1);
+            for (int i = 0; i < 4; i++) {
+                int espacios = (triangulo.length - 3) + (ramas - 1);
                 for (int x = 0; x < espacios; x++) {
                     System.out.print(" ");
                 }
-                for (int j = 0; j < 5; j++) {
+                for (int j = 0; j < 4; j++) {
                     System.out.print(BROWN+"*");
                 }
                 System.out.println(RESET);
             }
-        } else if (ramas < 30) {
-            for (int i = 0; i < 6; i++) {
-                int espacios = (triangulo.length - 5) + (ramas - 1);
+        } else {
+            for (int i = 0; i < (ramas/5); i++) {
+                int espacios = (triangulo.length - (ramas/8)) + (ramas - 1);
                 for (int x = 0; x < espacios; x++) {
                     System.out.print(" ");
                 }
-                for (int j = 0; j < 6; j++) {
+                for (int j = 0; j < (ramas/5); j++) {
                     System.out.print(BROWN+"*");
                 }
                 System.out.println(RESET);
             }
         }
+    }
 
+    /**
+     * Utiliza el metodo tronco y añade los regalos
+     */
+    static void troncoConRegalos(){
+        int largoRegalo = 3;
+        int anchoRegalo = 2;
+        if (ramas <= 1){
+            for (int i = 0; i < 2; i++) {
+                if (i == 0){
+                    int espacios = (triangulo.length - 2) + (ramas - 1);
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.println(RESET);
+                } else {
+                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo;
+                    System.out.print(RED+"*"+RESET+"*"+RED+"*");
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.println(RESET);
+                }
+            }
+        } else if (ramas < 10) {
+            for (int i = 0; i < 3; i++) {
+                if (i == 0){
+                    int espacios = (triangulo.length - 2) + (ramas - 1);
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.println(RESET);
+                } else {
+                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo - 1;
+
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(RED+"▓"+RESET+"▓"+RED+"▓ ");
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.print(" "+BLUE+"▓"+RESET+"▓"+BLUE+"▓");
+                    System.out.println(RESET);
+                }
+            }
+        } else if (ramas < 20) {
+            for (int i = 0; i < 4; i++) {
+                int espacios = (triangulo.length - 3) + (ramas - 1);
+                for (int x = 0; x < espacios; x++) {
+                    System.out.print(" ");
+                }
+                for (int j = 0; j < 4; j++) {
+                    System.out.print(BROWN+"*");
+                }
+                System.out.println(RESET);
+            }
+        } else {
+            for (int i = 0; i < (ramas/5); i++) {
+                int espacios = (triangulo.length - (ramas/8)) + (ramas - 1);
+                for (int x = 0; x < espacios; x++) {
+                    System.out.print(" ");
+                }
+                for (int j = 0; j < (ramas/5); j++) {
+                    System.out.print(BROWN+"*");
+                }
+                System.out.println(RESET);
+            }
+        }
     }
 }
