@@ -20,7 +20,7 @@ Sigue estos pasos para descargar y ejecutar el proyecto en tu ordenador:
 Abre tu terminal y ejecuta el siguiente comando para descargar el código:
 
 ```bash
-git clone [https://github.com/espinosa-dev/ArbolNavidad.git](https://github.com/espinosa-dev/ArbolNavidad.git)
+git clone https://github.com/espinosa-dev/ArbolNavidad.git
 ```
 
 ### 2. Acceder al directorio
