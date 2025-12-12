@@ -18,6 +18,9 @@ public class Animated {
     public static final String YELLOW = "\033[0;33m";
     public static final String BROWN = "\033[38;5;94m";
     public static final String DARK_GREEN = "\033[1;38;5;28m";
+    public static final String WHITE_BOLD_BRIGHT = "\033[1;97m";
+    public static final String PURPLE_BOLD_BRIGHT = "\033[1;95m";
+    public static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";
     public static String[] colores = {RED, BLUE, ORANGE};
     private static final String[] TRIANGULO_BASE = {"*","***","*****","*******"};
     private static String[] triangulo;
@@ -149,7 +152,7 @@ public class Animated {
                             int colorRandom = (int) (Math.random() * colores.length);
                             System.out.print(colores[colorRandom] + caracter);
                         } else if (Math.random() < 0.05 && nieve) {
-                            System.out.print(RESET+caracter);
+                            System.out.print(WHITE_BOLD_BRIGHT+caracter);
                         } else {
                             System.out.print(colorBase + caracter);
                         }
@@ -308,13 +311,13 @@ public class Animated {
         for (int i = 0; i < suelo-2; i++) {
             System.out.print(DARK_ORANGE+"▀");
         }
-        System.out.println();
+        System.out.println(RESET);
         int espacios = (suelo/2) - (name.length()/2);
         for (int i = 0; i < espacios; i++) {
             System.out.print(" ");
         }
-        System.out.println(name);
-        System.out.println("Ctrl + C <- Finalizar el programa (Luego introducir \"S\")");
+        System.out.println(PURPLE_BOLD_BRIGHT+name);
+        System.out.print(RED_BACKGROUND_BRIGHT+WHITE_BOLD_BRIGHT+"Ctrl + C <- Finalizar el programa (Luego introducir \"S\")");
     }
 
     static void espacioPantalla(){
