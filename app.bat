@@ -36,7 +36,7 @@ title Arbol de Navidad
 mode 100,50
 cd /d "%~dp0"
 cd src
-echo      Árbol de Navidad
+echo      Arbol de Navidad
 echo --------------------------
 java Animated.java 3 s s s s
 if %errorlevel% neq 0 (
