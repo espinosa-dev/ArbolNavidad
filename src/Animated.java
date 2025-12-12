@@ -4,6 +4,7 @@
  * @author Alvaro Espinosa Montesinos
  */
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Animated {
@@ -27,10 +28,12 @@ public class Animated {
     private static boolean estrella = true;
     private static boolean tronco = true;
     private static boolean decoracion = true;
+    private static boolean regalos = true;
+    private static String nombre;
 
     public static void main(String[] args) {
-        ramas = Integer.parseInt(args[0]);
-
+        //ramas = Integer.parseInt(args[0]);
+        menu();
         if (decoracion) {
             try {
                 // Bucle infinito para la animación
@@ -39,8 +42,13 @@ public class Animated {
                     limpiarPantalla();
                     resetearTriangulo();
                     decoration(ramas, estrella);
-                    if (tronco) tronco();
-
+                    if (tronco && regalos) {
+                        troncoConRegalos();
+                    }
+                    else if (tronco){
+                        tronco();
+                    }
+                    suelo(nombre);
                     // 4. Esperamos medio segundo
                     Thread.sleep(500);
                 }
@@ -99,11 +107,20 @@ public class Animated {
             answer = scn.nextLine().charAt(0);
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         tronco = answer == 83 || answer == 115;
+        if (tronco){
+            do {
+                System.out.print("Quieres regalos (S/N): ");
+                answer = scn.nextLine().charAt(0);
+            } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
+            regalos = answer == 83 || answer == 115;
+        }
         do {
             System.out.print("Quieres decoración (S/N): ");
             answer = scn.nextLine().charAt(0);
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         decoracion = answer == 83 || answer == 115;
+        System.out.print("Nombre que quieres que aparezca: ");
+        nombre = scn.nextLine();
     }
 
     /**
@@ -152,6 +169,7 @@ public class Animated {
      * @param star Si tiene estrella o no
      */
     static void decoration(int ramas, boolean star) {
+        espacioPantalla();
         for (int i = 0; i < ramas; i++) {
             String colorBase;
             if (i % 2 == 0) colorBase = GREEN;
@@ -239,5 +257,103 @@ public class Animated {
             }
         }
 
+    }
+
+    static void troncoConRegalos(){
+        int largoRegalo = 3;
+        int anchoRegalo = 2;
+        if (ramas <= 1){
+            for (int i = 0; i < 2; i++) {
+                if (i == 0){
+                    int espacios = (triangulo.length - 2) + (ramas - 1);
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.println(RESET);
+                } else {
+                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo;
+                    System.out.print(RED+"*"+RESET+"*"+RED+"*");
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.println(RESET);
+                }
+            }
+        } else if (ramas < 10) {
+            for (int i = 0; i < 3; i++) {
+                if (i == 0){
+                    int espacios = (triangulo.length - 2) + (ramas - 1);
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.println(RESET);
+                } else {
+                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo - 1;
+
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(RED+"▓"+RESET+"▓"+RED+"▓ ");
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.print(" "+BLUE+"▓"+RESET+"▓"+BLUE+"▓");
+                    System.out.println(RESET);
+                }
+            }
+        } else if (ramas < 20) {
+            for (int i = 0; i < 4; i++) {
+                int espacios = (triangulo.length - 3) + (ramas - 1);
+                for (int x = 0; x < espacios; x++) {
+                    System.out.print(" ");
+                }
+                for (int j = 0; j < 4; j++) {
+                    System.out.print(BROWN+"*");
+                }
+                System.out.println(RESET);
+            }
+        } else {
+            for (int i = 0; i < (ramas/5); i++) {
+                int espacios = (triangulo.length - (ramas/8)) + (ramas - 1);
+                for (int x = 0; x < espacios; x++) {
+                    System.out.print(" ");
+                }
+                for (int j = 0; j < (ramas/5); j++) {
+                    System.out.print(BROWN+"*");
+                }
+                System.out.println(RESET);
+            }
+        }
+    }
+
+    static void suelo(String name){
+        int suelo = 7;
+        for (int i = 0; i < ramas; i++) {
+            suelo += 2;
+        }
+        for (int i = 0; i < suelo-2; i++) {
+            System.out.print(YELLOW+"▀");
+        }
+        System.out.println();
+        int espacios = (suelo/2) - (name.length()/2);
+        for (int i = 0; i < espacios; i++) {
+            System.out.print(" ");
+        }
+        System.out.println(name);
+    }
+
+    static void espacioPantalla(){
+        for (int i = 0; i < 5; i++) {
+            System.out.println();
+        }
     }
 }
