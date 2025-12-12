@@ -50,7 +50,7 @@ public class Animated {
                     }
                     suelo(nombre);
                     // 4. Esperamos
-                    Thread.sleep(500);
+                    Thread.sleep(450);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace(); // Salida de error estándar la traza completa del error
@@ -374,7 +374,7 @@ public class Animated {
     }
 
     static void espacioPantalla(){
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             System.out.println();
         }
     }
