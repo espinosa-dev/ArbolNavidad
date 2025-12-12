@@ -46,6 +46,9 @@ Lanza la aplicación con el comando java:
 java -cp src ArbolNavidad
 ```
 
+### 5. Salida esperada (Para un árbol de tres ramas)
+<img width="302" height="384" alt="image" src="https://github.com/user-attachments/assets/00970da6-72a0-4568-ae2d-4e3aad05b153" />
+
 ## ✒️ Autor
 
 * **espinosa-dev** - *Trabajo inicial y desarrollo* - [Ver perfil en GitHub](https://github.com/espinosa-dev)
