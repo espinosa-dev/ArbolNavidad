@@ -24,12 +24,12 @@ public class Animated {
 
     private static Scanner scn = new Scanner(System.in);
     private static int ramas;
-    private static boolean estrella = false;
-    private static boolean tronco = false;
-    private static boolean decoracion = false;
+    private static boolean estrella = true;
+    private static boolean tronco = true;
+    private static boolean decoracion = true;
 
     public static void main(String[] args) {
-        menu();
+        ramas = Integer.parseInt(args[0]);
 
         if (decoracion) {
             try {
