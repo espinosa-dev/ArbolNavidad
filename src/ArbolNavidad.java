@@ -19,6 +19,10 @@ public class ArbolNavidad {
      */
     public static final String BLUE = "\033[38;5;39m";
     /**
+     * Color: Naranja Oscuro
+     */
+    public static final String DARK_ORANGE = "\033[38;5;166m";
+    /**
      * Color: Naranja
      */
     public static final String ORANGE = "\033[38;5;208m";
@@ -329,9 +333,9 @@ public class ArbolNavidad {
             suelo += 2;
         }
         for (int i = 0; i < suelo-2; i++) {
-            System.out.print(YELLOW+"▀");
+            System.out.print(DARK_ORANGE+"▀");
         }
-        System.out.println();
+        System.out.println(RESET);
         int espacios = (suelo/2) - (name.length()/2);
         for (int i = 0; i < espacios; i++) {
             System.out.print(" ");

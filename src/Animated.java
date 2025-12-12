@@ -1,10 +1,9 @@
 /**
- * Ejercicio de Arbol de Navidad para ejecutar en consola de Windows
- * con el siguiente comando: java Animated.java (Debes estar en la ruta del archivo!)
+ * Ejercicío de Arbol de Navidad para ejecutar en consola de Windows
+ * con el siguiente comando: java Animated.java (Debes estar en la ruta del archivo)
  * @author Alvaro Espinosa Montesinos
  */
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Animated {
@@ -19,7 +18,7 @@ public class Animated {
     public static final String YELLOW = "\033[0;33m";
     public static final String BROWN = "\033[38;5;94m";
     public static final String DARK_GREEN = "\033[1;38;5;28m";
-    public static String[] colores = {RED, DARK_RED, BLUE, DARK_BLUE, ORANGE, DARK_ORANGE};
+    public static String[] colores = {RED, BLUE, ORANGE};
     private static final String[] TRIANGULO_BASE = {"*","***","*****","*******"};
     private static String[] triangulo;
 
@@ -29,6 +28,7 @@ public class Animated {
     private static boolean tronco = true;
     private static boolean decoracion = true;
     private static boolean regalos = true;
+    private static boolean nieve = true;
     private static String nombre;
 
     public static void main(String[] args) {
@@ -49,7 +49,7 @@ public class Animated {
                         tronco();
                     }
                     suelo(nombre);
-                    // 4. Esperamos medio segundo
+                    // 4. Esperamos
                     Thread.sleep(500);
                 }
             } catch (InterruptedException e) {
@@ -119,6 +119,13 @@ public class Animated {
             answer = scn.nextLine().charAt(0);
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         decoracion = answer == 83 || answer == 115;
+        if (decoracion){
+            do {
+                System.out.print("Quieres nieve (S/N): ");
+                answer = scn.nextLine().charAt(0);
+            } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
+            nieve = answer == 83 || answer == 115;
+        }
         System.out.print("Nombre que quieres que aparezca: ");
         nombre = scn.nextLine();
     }
@@ -194,9 +201,11 @@ public class Animated {
                     String lineaActual = triangulo[j];
                     for (int k = 0; k < lineaActual.length(); k++) {
                         char caracter = lineaActual.charAt(k);
-                        if (Math.random() < 0.15) {
+                        if (Math.random() < 0.05) {
                             int colorRandom = (int) (Math.random() * colores.length);
                             System.out.print(colores[colorRandom] + caracter);
+                        } else if (Math.random() < 0.05 && nieve) {
+                            System.out.print(RESET+caracter);
                         } else {
                             System.out.print(colorBase + caracter);
                         }
@@ -260,21 +269,21 @@ public class Animated {
     }
 
     static void troncoConRegalos(){
+        int largoLazo = 1;
         int largoRegalo = 3;
-        int anchoRegalo = 2;
         if (ramas <= 1){
             for (int i = 0; i < 2; i++) {
+                int espacios;
                 if (i == 0){
-                    int espacios = (triangulo.length - 2) + (ramas - 1);
+                    espacios = (triangulo.length - 2) + (ramas - 1);
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
                     for (int j = 0; j < 3; j++) {
                         System.out.print(BROWN+"*");
                     }
-                    System.out.println(RESET);
                 } else {
-                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo;
+                    espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo;
                     System.out.print(RED+"*"+RESET+"*"+RED+"*");
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
@@ -282,8 +291,8 @@ public class Animated {
                     for (int j = 0; j < 3; j++) {
                         System.out.print(BROWN+"*");
                     }
-                    System.out.println(RESET);
                 }
+                System.out.println(RESET);
             }
         } else if (ramas < 10) {
             for (int i = 0; i < 3; i++) {
@@ -295,6 +304,18 @@ public class Animated {
                     for (int j = 0; j < 3; j++) {
                         System.out.print(BROWN+"*");
                     }
+                    System.out.println(RESET);
+                } else if (i == 1) {
+                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoLazo - 2;
+
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(RESET+"ღ"+"  ");
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.print("  "+RESET+"ღ");
                     System.out.println(RESET);
                 } else {
                     int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo - 1;
@@ -341,7 +362,7 @@ public class Animated {
             suelo += 2;
         }
         for (int i = 0; i < suelo-2; i++) {
-            System.out.print(YELLOW+"▀");
+            System.out.print(DARK_ORANGE+"▀");
         }
         System.out.println();
         int espacios = (suelo/2) - (name.length()/2);
@@ -349,6 +370,7 @@ public class Animated {
             System.out.print(" ");
         }
         System.out.println(name);
+        System.out.println("Ctrl + C ⬅ Finalizar el programa (Luego introducir \"S\")");
     }
 
     static void espacioPantalla(){
