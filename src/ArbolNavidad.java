@@ -55,6 +55,7 @@ public class ArbolNavidad {
     private static boolean tronco = false;
     private static boolean decoracion = false;
     private static boolean regalos = false;
+    private static String nombre;
     public static void main(String[] args) {
         menu();
         if (decoracion){
@@ -65,6 +66,7 @@ public class ArbolNavidad {
             troncoConRegalos();
         else
             tronco();
+        suelo(nombre);
     }
 
     /**
@@ -97,6 +99,8 @@ public class ArbolNavidad {
             answer = scn.nextLine().charAt(0);
         } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
         decoracion = answer == 83 || answer == 115;
+        System.out.print("Nombre que quieres que aparezca: ");
+        nombre = scn.nextLine();
     }
 
     /**
@@ -317,5 +321,21 @@ public class ArbolNavidad {
                 System.out.println(RESET);
             }
         }
+    }
+
+    static void suelo(String name){
+        int suelo = 7;
+        for (int i = 0; i < ramas; i++) {
+            suelo += 2;
+        }
+        for (int i = 0; i < suelo-2; i++) {
+            System.out.print(YELLOW+"▀");
+        }
+        System.out.println();
+        int espacios = (suelo/2) - (name.length()/2);
+        for (int i = 0; i < espacios; i++) {
+            System.out.print(" ");
+        }
+        System.out.println(name);
     }
 }
