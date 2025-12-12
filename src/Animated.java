@@ -26,40 +26,29 @@ public class Animated {
     private static int ramas;
     private static boolean estrella = true;
     private static boolean tronco = true;
-    private static boolean decoracion = true;
+    private static final boolean DECORACION = true;
     private static boolean regalos = true;
     private static boolean nieve = true;
     private static String nombre;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //ramas = Integer.parseInt(args[0]);
         menu();
-        if (decoracion) {
-            try {
                 // Bucle infinito para la animación
-                while (true) {
+        while (true) {
                     // Limpiamos consola (Efecto CLS)
-                    limpiarPantalla();
-                    resetearTriangulo();
-                    decoration(ramas, estrella);
-                    if (tronco && regalos) {
-                        troncoConRegalos();
-                    }
-                    else if (tronco){
-                        tronco();
-                    }
-                    suelo(nombre);
-                    // 4. Esperamos
-                    Thread.sleep(450);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace(); // Salida de error estándar la traza completa del error
-                // mostrando dónde ocurrió y en qué contexto
-            }
-        } else {
+            limpiarPantalla();
             resetearTriangulo();
-            ramas(ramas, estrella);
-            if (tronco) tronco();
+            decoration(ramas, estrella);
+            if (tronco && regalos) {
+                troncoConRegalos();
+            }
+            else if (tronco){
+                tronco();
+            }
+            suelo(nombre);
+            // 4. Esperamos
+            Thread.sleep(450);
         }
     }
 
@@ -114,12 +103,7 @@ public class Animated {
             } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
             regalos = answer == 83 || answer == 115;
         }
-        do {
-            System.out.print("Quieres decoración (S/N): ");
-            answer = scn.nextLine().charAt(0);
-        } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
-        decoracion = answer == 83 || answer == 115;
-        if (decoracion){
+        if (DECORACION){
             do {
                 System.out.print("Quieres nieve (S/N): ");
                 answer = scn.nextLine().charAt(0);
@@ -131,47 +115,7 @@ public class Animated {
     }
 
     /**
-     * Imprime las ramas (triangulos)
-     * @param ramas Numero de ramas
-     * @param star Si tiene estrella o no
-     */
-    static void ramas(int ramas, boolean star){
-        for (int i = 0; i < ramas; i++) {
-            if (i == 0){
-                for (int j = 0; j < triangulo.length; j++) {
-                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i);
-                    for (int x = 0; x < espacios; x++) {
-                        System.out.print(" ");
-                    }
-                    if (star && j == 0){
-                        System.out.println(YELLOW+triangulo[0]+RESET);
-                    } else {
-                        System.out.println(GREEN+triangulo[j]+RESET);
-                    }
-                }
-            } else if (i % 2 == 0) {
-                for (int j = 0; j < triangulo.length; j++) {
-                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i);
-                    for (int x = 0; x < espacios; x++) {
-                        System.out.print(" ");
-                    }
-                    triangulo[j] = triangulo[j]+"**";
-                    System.out.println(GREEN+triangulo[j]+RESET);
-                }
-            } else {
-                for (int j = 0; j < triangulo.length; j++) {
-                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i);
-                    for (int x = 0; x < espacios; x++) {
-                        System.out.print(" ");
-                    }
-                    triangulo[j] = triangulo[j]+"**";
-                    System.out.println(DARK_GREEN +triangulo[j]+RESET);
-                }
-            }
-        }
-    }
-    /**
-     * Imprime la decoracion
+     * Imprime las ramas con decoracion
      * @param ramas Numeros de ramas
      * @param star Si tiene estrella o no
      */
