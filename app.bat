@@ -32,5 +32,30 @@
 ::
 ::978f952a14a936cc963da21a135fa983
 @echo off
-cd %~dp0out\production\ArbolNavidad\
-START app.bat
+title Arbol de Navidad
+:: Configura la ventana para que se vea bien el arbol
+mode 100,50
+
+:: 1. Nos aseguramos de estar en la carpeta donde esta este archivo
+cd /d "%~dp0"
+
+:: 2. Entramos a la carpeta del codigo fuente (src)
+cd src
+
+echo Buscando Animated.java...
+echo --------------------------
+
+:: 3. Ejecutamos DIRECTAMENTE el archivo Java.
+:: Esto evita errores de versiones compiladas viejas en la carpeta 'out'.
+java Animated.java 3 s s s s
+
+:: Si falla, mantenemos la ventana abierta para leer el error
+if %errorlevel% neq 0 (
+    echo.
+    echo [ERROR] Algo fallo. Revisa que tengas Java 11 o superior.
+    pause
+) else (
+    echo.
+    echo Fin de la animacion.
+    pause
+)
