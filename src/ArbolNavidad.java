@@ -112,7 +112,7 @@ public class ArbolNavidad {
                         System.out.print(" ");
                     }
                     triangulo[j] = triangulo[j]+"**";
-                    System.out.println(GREEN+triangulo[j]);
+                    System.out.println(Colorbase+triangulo[j]);
                 }
             }
         }
