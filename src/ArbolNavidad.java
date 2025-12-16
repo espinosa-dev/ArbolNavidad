@@ -195,7 +195,6 @@ public class ArbolNavidad {
             }
         }
     }
-
     /**
      * Utiliza el metodo tronco y añade los regalos
      */
