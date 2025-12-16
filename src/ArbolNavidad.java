@@ -87,6 +87,12 @@ public class ArbolNavidad {
      */
     static void ramas(int ramas, boolean star){
         for (int i = 0; i < ramas; i++) {
+            String Colorbase;
+            if (i % 2== 0)
+                Colorbase = GREEN;
+            else
+                Colorbase = DARK_GREEN;
+
             if (i == 0){
                 for (int j = 0; j < triangulo.length; j++) {
                     int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i);
