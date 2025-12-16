@@ -35,7 +35,7 @@ public class ArbolNavidad {
         }
         if (tronco && regalos)
             troncoConRegalos();
-        else
+        else if (tronco)
             tronco();
         suelo(nombre);
     }
