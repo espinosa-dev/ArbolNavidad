@@ -214,7 +214,7 @@ public class ArbolNavidad {
                     }
                     System.out.println(RESET);
                 } else {
-                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo;
+                    espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo;
                     System.out.print(RED+"*"+RESET+"*"+RED+"*");
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
