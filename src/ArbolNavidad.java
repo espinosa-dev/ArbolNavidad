@@ -223,7 +223,6 @@ public class ArbolNavidad {
      */
     static void troncoConRegalos(){
         int largoRegalo = 3;
-        int anchoRegalo = 2;
         if (ramas <= 1){
             for (int i = 0; i < 2; i++) {
                 if (i == 0){
