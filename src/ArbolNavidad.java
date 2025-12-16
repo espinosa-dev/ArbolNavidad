@@ -274,6 +274,10 @@ public class ArbolNavidad {
         }
     }
 
+    /**
+     * Imprime el suelo y el nombre.
+     * @param name Nombre que nos da el usuario
+     */
     static void suelo(String name){
         int suelo = 7;
         for (int i = 0; i < ramas; i++) {
