@@ -53,8 +53,9 @@ public class ArbolNavidad {
         do {
             System.out.print("Quieres una estrella (S/N): ");
             answer = scn.nextLine().charAt(0);
-        } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
-        estrella = answer == 83 || answer == 115;
+            answer = Character.toLowerCase(answer);
+        } while (!(answer == 's' || answer == 'n'));
+        estrella = answer == 's';
         do {
             System.out.print("Quieres un tronco (S/N): ");
             answer = scn.nextLine().charAt(0);
