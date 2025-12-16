@@ -182,7 +182,7 @@ public class ArbolNavidad {
                 }
                 System.out.println(RESET);
             }
-        } else if (ramas < 10) {
+        } else {
             for (int i = 0; i < 3; i++) {
                 int espacios = (triangulo.length - 2) + (ramas - 1);
                 for (int x = 0; x < espacios; x++) {
