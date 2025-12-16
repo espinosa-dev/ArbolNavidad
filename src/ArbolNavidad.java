@@ -3,6 +3,7 @@
  * @author Alvaro Espinosa Montesinos
  */
 
+import static settings.Colours.*;
 import java.util.Scanner;
 
 public class ArbolNavidad {
