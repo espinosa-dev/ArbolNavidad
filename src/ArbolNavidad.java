@@ -59,8 +59,9 @@ public class ArbolNavidad {
         do {
             System.out.print("Quieres un tronco (S/N): ");
             answer = scn.nextLine().charAt(0);
-        } while (!(answer == 'S' || answer == 's' || answer == 'N' || answer == 'n'));
-        tronco = answer == 83 || answer == 115;
+            answer = Character.toLowerCase(answer);
+        } while (!(answer == 's' || answer == 'n'));
+        tronco = answer == 's';
         if (tronco){
             do {
                 System.out.print("Quieres regalos (S/N): ");
