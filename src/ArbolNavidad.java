@@ -199,6 +199,7 @@ public class ArbolNavidad {
      * Utiliza el metodo tronco y añade los regalos
      */
     static void troncoConRegalos(){
+        int largoLazo = 1;
         int largoRegalo = 3;
         if (ramas <= 1){
             for (int i = 0; i < 2; i++) {
