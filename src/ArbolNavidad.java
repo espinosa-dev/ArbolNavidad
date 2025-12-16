@@ -45,8 +45,10 @@ public class ArbolNavidad {
      */
     static void menu(){
         char answer;
-        System.out.print("Cuantas ramas deseas ingresar: ");
-        ramas = scn.nextInt();
+        do {
+            System.out.print("Cuantas ramas deseas ingresar (Máximo 10): ");
+            ramas = scn.nextInt();
+        } while (ramas > 10 || ramas < 0);
         scn.nextLine();
         do {
             System.out.print("Quieres una estrella (S/N): ");
