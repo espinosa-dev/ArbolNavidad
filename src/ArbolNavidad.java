@@ -8,42 +8,6 @@ import java.util.Scanner;
 
 public class ArbolNavidad {
     /**
-     * Color default
-     */
-    public static final String RESET = "\033[0m";
-    /**
-     * Color: Rojo
-     */
-    public static final String RED = "\033[38;5;196m";
-    /**
-     * Color: Azul
-     */
-    public static final String BLUE = "\033[38;5;39m";
-    /**
-     * Color: Naranja Oscuro
-     */
-    public static final String DARK_ORANGE = "\033[38;5;166m";
-    /**
-     * Color: Naranja
-     */
-    public static final String ORANGE = "\033[38;5;208m";
-    /**
-     * Color: Verde
-     */
-    public static final String GREEN = "\033[1;38;5;22m";
-    /**
-     * Color: Amarillo
-     */
-    public static final String YELLOW = "\033[0;33m";
-    /**
-     * Color: Brown
-     */
-    public static final String BROWN = "\033[38;5;94m";
-    /**
-     * Color: Verde Oscuro
-     */
-    public static final String DARK_GREEN = "\033[1;38;5;28m";
-    /**
      * Array de los colores para la decoracion
      */
     public static String[] colores = {RED, BLUE, ORANGE};
