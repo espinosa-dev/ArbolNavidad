@@ -27,10 +27,12 @@ public class ArbolNavidad {
     private static String nombre;
     public static void main(String[] args) {
         menu();
-        if (decoracion){
-            decoration(ramas, estrella);
-        } else
-            ramas(ramas, estrella);
+        if (ramas > 0) {
+            if (decoracion) {
+                decoration(ramas, estrella);
+            } else
+                ramas(ramas, estrella);
+        }
         if (tronco && regalos)
             troncoConRegalos();
         else
