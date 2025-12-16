@@ -105,7 +105,7 @@ public class ArbolNavidad {
                         System.out.println(GREEN+triangulo[j]);
                     }
                 }
-            } else if (i % 2 == 0) {
+            } else {
                 for (int j = 0; j < triangulo.length; j++) {
                     int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i);
                     for (int x = 0; x < espacios; x++) {
