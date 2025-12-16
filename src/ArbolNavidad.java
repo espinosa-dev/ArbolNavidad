@@ -193,28 +193,6 @@ public class ArbolNavidad {
                 }
                 System.out.println(RESET);
             }
-        } else if (ramas < 20) {
-            for (int i = 0; i < 4; i++) {
-                int espacios = (triangulo.length - 3) + (ramas - 1);
-                for (int x = 0; x < espacios; x++) {
-                    System.out.print(" ");
-                }
-                for (int j = 0; j < 4; j++) {
-                    System.out.print(BROWN+"*");
-                }
-                System.out.println(RESET);
-            }
-        } else {
-            for (int i = 0; i < (ramas/5); i++) {
-                int espacios = (triangulo.length - (ramas/8)) + (ramas - 1);
-                for (int x = 0; x < espacios; x++) {
-                    System.out.print(" ");
-                }
-                for (int j = 0; j < (ramas/5); j++) {
-                    System.out.print(BROWN+"*");
-                }
-                System.out.println(RESET);
-            }
         }
     }
 
