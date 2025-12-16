@@ -212,7 +212,6 @@ public class ArbolNavidad {
                     for (int j = 0; j < 3; j++) {
                         System.out.print(BROWN+"*");
                     }
-                    System.out.println(RESET);
                 } else {
                     espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo;
                     System.out.print(RED+"*"+RESET+"*"+RED+"*");
