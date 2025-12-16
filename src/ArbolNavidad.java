@@ -205,7 +205,7 @@ public class ArbolNavidad {
             for (int i = 0; i < 2; i++) {
                 int espacios;
                 if (i == 0){
-                    int espacios = (triangulo.length - 2) + (ramas - 1);
+                    espacios = (triangulo.length - 2) + (ramas - 1);
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
