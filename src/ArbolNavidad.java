@@ -3,7 +3,7 @@
  * @author Alvaro Espinosa Montesinos
  */
 
-import static settings.Colours.*;
+import static SETTINGS.Colours.*;
 import java.util.Scanner;
 
 public class ArbolNavidad {
@@ -15,6 +15,7 @@ public class ArbolNavidad {
      * Array del triangulo principal
      */
     private static String[] triangulo = {"*","***","*****","*******"};
+    private static String[] chimenea = {"▓▀▀▀▀▓","▓","▓"};
     /**
      * Scanner para recibir datos del usuario
      */
@@ -24,6 +25,7 @@ public class ArbolNavidad {
     private static boolean tronco = false;
     private static boolean decoracion = false;
     private static boolean regalos = false;
+    private static boolean fuego = false;
     private static String nombre;
     public static void main(String[] args) {
         menu();
@@ -76,6 +78,12 @@ public class ArbolNavidad {
             answer = Character.toLowerCase(answer);
         } while (!(answer == 's' || answer == 'n'));
         decoracion = answer == 's';
+        do {
+            System.out.print("Quieres chimenea (S/N): ");
+            answer = scn.nextLine().charAt(0);
+            answer = Character.toLowerCase(answer);
+        } while (!(answer == 's' || answer == 'n'));
+        fuego = answer == 's';
         System.out.print("Nombre que quieres que aparezca: ");
         nombre = scn.nextLine();
     }
@@ -95,7 +103,7 @@ public class ArbolNavidad {
 
             if (i == 0){
                 for (int j = 0; j < triangulo.length; j++) {
-                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i);
+                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
@@ -107,7 +115,7 @@ public class ArbolNavidad {
                 }
             } else {
                 for (int j = 0; j < triangulo.length; j++) {
-                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i);
+                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
@@ -139,7 +147,7 @@ public class ArbolNavidad {
 
             for (int j = 0; j < triangulo.length; j++) {
 
-                int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i);
+                int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
 
                 for (int x = 0; x < espacios; x++) {
                     System.out.print(" ");
@@ -173,23 +181,51 @@ public class ArbolNavidad {
     static void tronco(){
         if (ramas <= 1){
             for (int i = 0; i < 2; i++) {
-                int espacios = (triangulo.length - 2) + (ramas - 1);
+                int espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                 for (int x = 0; x < espacios; x++) {
                     System.out.print(" ");
                 }
                 for (int j = 0; j < 3; j++) {
                     System.out.print(BROWN+"*");
+                }
+                if (fuego) {
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(BRICK_RED + chimenea[i]);
                 }
                 System.out.println(RESET);
             }
         } else {
             for (int i = 0; i < 3; i++) {
-                int espacios = (triangulo.length - 2) + (ramas - 1);
+                int espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                 for (int x = 0; x < espacios; x++) {
                     System.out.print(" ");
                 }
                 for (int j = 0; j < 3; j++) {
                     System.out.print(BROWN+"*");
+                }
+                if (fuego) {
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    if (i == 0){
+                        System.out.print(BRICK_RED + chimenea[i]);
+                    } else {
+                        System.out.print(BRICK_RED + chimenea[i]);
+                        String foc = "WWWW";
+                        String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
+                        for (int k = 0; k < foc.length(); k++) {
+                            char caracter = foc.charAt(k);
+                            if (Math.random() < 0.5) {
+                                int colorRandom = (int) (Math.random() * colores.length);
+                                System.out.print(colorFuego[colorRandom] + caracter);
+                            } else {
+                                System.out.print(RED + caracter);
+                            }
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
+                    }
                 }
                 System.out.println(RESET);
             }
@@ -205,15 +241,23 @@ public class ArbolNavidad {
             for (int i = 0; i < 2; i++) {
                 int espacios;
                 if (i == 0){
-                    espacios = (triangulo.length - 2) + (ramas - 1);
+                    espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
                     for (int j = 0; j < 3; j++) {
                         System.out.print(BROWN+"*");
                     }
+                    if (fuego) {
+                        for (int x = 0; x < espacios; x++) {
+                            System.out.print(" ");
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
+                    }
+                    System.out.println(RESET);
+
                 } else {
-                    espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo;
+                    espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo + 5;
                     System.out.print(RED+"*"+RESET+"*"+RED+"*");
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
@@ -221,55 +265,111 @@ public class ArbolNavidad {
                     for (int j = 0; j < 3; j++) {
                         System.out.print(BROWN+"*");
                     }
-                    System.out.println(RESET);
-                }
-            }
-        } else if (ramas < 10) {
-            for (int i = 0; i < 3; i++) {
-                if (i == 0){
-                    int espacios = (triangulo.length - 2) + (ramas - 1);
-                    for (int x = 0; x < espacios; x++) {
-                        System.out.print(" ");
-                    }
-                    for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
-                    }
-                    System.out.println(RESET);
-                } else {
-                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo - 1;
+                    if (fuego) {
+                        for (int x = 0; x < espacios; x++) {
+                            System.out.print(" ");
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
+                        String foc = "WWWW";
+                        String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
+                        for (int k = 0; k < foc.length(); k++) {
+                            char caracter = foc.charAt(k);
+                            if (Math.random() < 0.5) {
+                                int colorRandom = (int) (Math.random() * colores.length);
+                                System.out.print(colorFuego[colorRandom] + caracter);
+                            } else {
+                                System.out.print(RED + caracter);
+                            }
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
 
-                    for (int x = 0; x < espacios; x++) {
-                        System.out.print(" ");
                     }
-                    System.out.print(RED+"▓"+RESET+"▓"+RED+"▓ ");
-                    for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
-                    }
-                    System.out.print(" "+BLUE+"▓"+RESET+"▓"+BLUE+"▓");
-                    System.out.println(RESET);
-                }
-            }
-        } else if (ramas < 20) {
-            for (int i = 0; i < 4; i++) {
-                int espacios = (triangulo.length - 3) + (ramas - 1);
-                for (int x = 0; x < espacios; x++) {
-                    System.out.print(" ");
-                }
-                for (int j = 0; j < 4; j++) {
-                    System.out.print(BROWN+"*");
                 }
                 System.out.println(RESET);
             }
         } else {
-            for (int i = 0; i < (ramas/5); i++) {
-                int espacios = (triangulo.length - (ramas/8)) + (ramas - 1);
-                for (int x = 0; x < espacios; x++) {
-                    System.out.print(" ");
+            for (int i = 0; i < 3; i++) {
+                char lazo;
+                if (ramas == 0)
+                    lazo = ' ';
+                else
+                    lazo = 'ღ';
+                if (i == 0){
+                    int espacios = (triangulo.length - 2) + (ramas - 1) + 5;
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    if (fuego) {
+                        for (int x = 0; x < espacios; x++) {
+                            System.out.print(" ");
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
+                    }
+                    System.out.println(RESET);
+                } else if (i == 1) {
+                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoLazo - 2 + 5;
+
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(RESET+lazo+"  ");
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.print("  "+RESET+lazo);
+                    if (fuego) {
+                        for (int x = 0; x < espacios; x++) {
+                            System.out.print(" ");
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
+                        String foc = "WWWW";
+                        String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
+                        for (int k = 0; k < foc.length(); k++) {
+                            char caracter = foc.charAt(k);
+                            if (Math.random() < 0.5) {
+                                int colorRandom = (int) (Math.random() * colores.length);
+                                System.out.print(colorFuego[colorRandom] + caracter);
+                            } else {
+                                System.out.print(RED + caracter);
+                            }
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
+                    }
+                    System.out.println(RESET);
+                } else {
+                    int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo - 1 + 5;
+
+                    for (int x = 0; x < espacios; x++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(DARK_RED+"▓"+RESET+"▓"+DARK_RED+"▓ ");
+                    for (int j = 0; j < 3; j++) {
+                        System.out.print(BROWN+"*");
+                    }
+                    System.out.print(" "+DARK_BLUE+"▓"+RESET+"▓"+DARK_BLUE+"▓");
+                    if (fuego) {
+                        for (int x = 0; x < espacios; x++) {
+                            System.out.print(" ");
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
+                        String foc = "WWWW";
+                        String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
+                        for (int k = 0; k < foc.length(); k++) {
+                            char caracter = foc.charAt(k);
+                            if (Math.random() < 0.5) {
+                                int colorRandom = (int) (Math.random() * colores.length);
+                                System.out.print(colorFuego[colorRandom] + caracter);
+                            } else {
+                                System.out.print(RED + caracter);
+                            }
+                        }
+                        System.out.print(BRICK_RED + chimenea[i]);
+                    }
+                    System.out.println(RESET);
                 }
-                for (int j = 0; j < (ramas/5); j++) {
-                    System.out.print(BROWN+"*");
-                }
-                System.out.println(RESET);
             }
         }
     }
@@ -279,7 +379,11 @@ public class ArbolNavidad {
      * @param name Nombre que nos da el usuario
      */
     static void suelo(String name){
-        int suelo = 7;
+        int suelo;
+        if (fuego)
+            suelo = 7+10+chimenea[0].length();
+        else
+            suelo = 7+10;
         for (int i = 0; i < ramas; i++) {
             suelo += 2;
         }
