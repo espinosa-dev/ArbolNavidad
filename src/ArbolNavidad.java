@@ -14,8 +14,16 @@ public class ArbolNavidad {
     /**
      * Array del triangulo principal
      */
-    private static String[] triangulo = {"*","***","*****","*******"};
+    private static String[] triangulo = {"♠","♠♠♠","♠♠♠♠♠","♠♠♠♠♠♠♠"};
     private static String[] chimenea = {"▓▀▀▀▀▓","▓","▓"};
+    private static final char CARACTER_TRONCO = '█';
+    private static final char CARACTER_HOJA = '♠';
+    private static final char CARACTER_ESTRELLA = '★';
+    private static final char CARACTER_NIEVE = '❅';
+    private static final char CARACTER_REGALO = '▓';
+    private static final String FOC = "WWWW";
+    private static char CARACTER_LAZO= 'ღ';
+    private static final char CARACTER_SUELO = '▀';
     /**
      * Scanner para recibir datos del usuario
      */
@@ -108,7 +116,7 @@ public class ArbolNavidad {
                         System.out.print(" ");
                     }
                     if (star && j == 0){
-                        System.out.println(YELLOW+triangulo[0]);
+                        System.out.println(YELLOW+CARACTER_ESTRELLA);
                     } else {
                         System.out.println(GREEN+triangulo[j]);
                     }
@@ -119,7 +127,7 @@ public class ArbolNavidad {
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
-                    triangulo[j] = triangulo[j]+"**";
+                    triangulo[j] = triangulo[j]+CARACTER_HOJA+CARACTER_HOJA;
                     System.out.println(Colorbase+triangulo[j]);
                 }
             }
@@ -141,7 +149,7 @@ public class ArbolNavidad {
 
             if (i > 0) {
                 for (int k = 0; k < triangulo.length; k++) {
-                    triangulo[k] = triangulo[k] + "**";
+                    triangulo[k] = triangulo[k] + CARACTER_HOJA+CARACTER_HOJA;
                 }
             }
 
@@ -154,7 +162,7 @@ public class ArbolNavidad {
                 }
 
                 if (star && i == 0 && j == 0) {
-                    System.out.println(YELLOW + triangulo[0]);
+                    System.out.println(YELLOW + CARACTER_ESTRELLA);
                 } else {
                     String lineaActual = triangulo[j];
 
@@ -186,7 +194,7 @@ public class ArbolNavidad {
                     System.out.print(" ");
                 }
                 for (int j = 0; j < 3; j++) {
-                    System.out.print(BROWN+"*");
+                    System.out.print(BROWN+CARACTER_TRONCO);
                 }
                 if (fuego) {
                     for (int x = 0; x < espacios; x++) {
@@ -203,7 +211,7 @@ public class ArbolNavidad {
                     System.out.print(" ");
                 }
                 for (int j = 0; j < 3; j++) {
-                    System.out.print(BROWN+"*");
+                    System.out.print(BROWN+CARACTER_TRONCO);
                 }
                 if (fuego) {
                     for (int x = 0; x < espacios; x++) {
@@ -213,12 +221,11 @@ public class ArbolNavidad {
                         System.out.print(BRICK_RED + chimenea[i]);
                     } else {
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
-                                int colorRandom = (int) (Math.random() * colores.length);
+                                int colorRandom = (int) (Math.random() * colorFuego.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
                             } else {
                                 System.out.print(RED + caracter);
@@ -246,7 +253,7 @@ public class ArbolNavidad {
                         System.out.print(" ");
                     }
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
                     if (fuego) {
                         for (int x = 0; x < espacios; x++) {
@@ -258,24 +265,23 @@ public class ArbolNavidad {
 
                 } else {
                     espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo + 5;
-                    System.out.print(RED+"*"+RESET+"*"+RED+"*");
+                    System.out.print(RED+CARACTER_REGALO+RESET+CARACTER_REGALO+RED+CARACTER_REGALO);
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
                     if (fuego) {
                         for (int x = 0; x < espacios; x++) {
                             System.out.print(" ");
                         }
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
-                                int colorRandom = (int) (Math.random() * colores.length);
+                                int colorRandom = (int) (Math.random() * colorFuego.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
                             } else {
                                 System.out.print(RED + caracter);
@@ -292,15 +298,13 @@ public class ArbolNavidad {
                 char lazo;
                 if (ramas == 0)
                     lazo = ' ';
-                else
-                    lazo = 'ღ';
                 if (i == 0){
                     int espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
                     if (fuego) {
                         for (int x = 0; x < espacios; x++) {
@@ -315,22 +319,21 @@ public class ArbolNavidad {
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
-                    System.out.print(RESET+lazo+"  ");
+                    System.out.print(RESET+CARACTER_LAZO+"  ");
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
-                    System.out.print("  "+RESET+lazo);
+                    System.out.print("  "+RESET+CARACTER_LAZO);
                     if (fuego) {
                         for (int x = 0; x < espacios; x++) {
                             System.out.print(" ");
                         }
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
-                                int colorRandom = (int) (Math.random() * colores.length);
+                                int colorRandom = (int) (Math.random() * colorFuego.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
                             } else {
                                 System.out.print(RED + caracter);
@@ -345,22 +348,21 @@ public class ArbolNavidad {
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
-                    System.out.print(DARK_RED+"▓"+RESET+"▓"+DARK_RED+"▓ ");
+                    System.out.print(DARK_RED+CARACTER_REGALO+RESET+CARACTER_REGALO+DARK_RED+CARACTER_REGALO+" ");
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
-                    System.out.print(" "+DARK_BLUE+"▓"+RESET+"▓"+DARK_BLUE+"▓");
+                    System.out.print(" "+DARK_BLUE+CARACTER_REGALO+RESET+CARACTER_REGALO+DARK_BLUE+CARACTER_REGALO);
                     if (fuego) {
                         for (int x = 0; x < espacios; x++) {
                             System.out.print(" ");
                         }
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
-                                int colorRandom = (int) (Math.random() * colores.length);
+                                int colorRandom = (int) (Math.random() * colorFuego.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
                             } else {
                                 System.out.print(RED + caracter);
@@ -388,7 +390,7 @@ public class ArbolNavidad {
             suelo += 2;
         }
         for (int i = 0; i < suelo-2; i++) {
-            System.out.print(DARK_ORANGE+"▀");
+            System.out.print(DARK_ORANGE+CARACTER_SUELO);
         }
         System.out.println(RESET);
         int espacios = (suelo/2) - (name.length()/2);
