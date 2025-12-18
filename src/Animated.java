@@ -8,9 +8,17 @@ import java.util.Scanner;
 import static SETTINGS.Colours.*;
 
 public class Animated {
-    public static String[] colores = {RED, BLUE, ORANGE};
-    private static final String[] TRIANGULO_BASE = {"*","***","*****","*******"};
+    public static String[] colores = {RED, BLUE, ORANGE, BALL_RED, BALL_BLUE, BALL_GOLD, BALL_PINK, BALL_SILVER};
+    private static final String[] TRIANGULO_BASE = {"♠","♠♠♠","♠♠♠♠♠","♠♠♠♠♠♠♠"};
     private static final String[] chimenea = {"▓▀▀▀▀▓","▓","▓"};
+    private static final char CARACTER_TRONCO = '█';
+    private static final char CARACTER_HOJA = '♠';
+    private static final char CARACTER_ESTRELLA = '★';
+    private static final char CARACTER_NIEVE = '❅';
+    private static final char CARACTER_REGALO = '▓';
+    private static final String FOC = "WWWW";
+    private static char CARACTER_LAZO= 'ღ';
+    private static final char CARACTER_SUELO = '▀';
     private static String[] triangulo;
 
     private static Scanner scn = new Scanner(System.in);
@@ -132,26 +140,26 @@ public class Animated {
 
             if (i > 0) {
                 for (int k = 0; k < triangulo.length; k++) {
-                    triangulo[k] = triangulo[k] + "**";
+                    triangulo[k] = triangulo[k] + CARACTER_HOJA+CARACTER_HOJA;
                 }
             }
 
             for (int j = 0; j < triangulo.length; j++) {
                 int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
                 for (int k = 0; k < espacios; k++) {
-                    if (Math.random() < 0.05 && nieve)
-                        System.out.print(WHITE_BOLD_BRIGHT+"*");
+                    if (Math.random() < 0.005 && nieve)
+                        System.out.print(WHITE_BOLD_BRIGHT+CARACTER_NIEVE);
                     else
                         System.out.print(" ");
                 }
 
                 if (star && i == 0 && j == 0) {
-                    System.out.println(YELLOW + triangulo[0] + RESET);
+                    System.out.println(YELLOW + CARACTER_ESTRELLA + RESET);
                 } else {
                     String lineaActual = triangulo[j];
                     for (int k = 0; k < lineaActual.length(); k++) {
                         char caracter = lineaActual.charAt(k);
-                        if (Math.random() < 0.05) {
+                        if (Math.random() < 0.10) {
                             int colorRandom = (int) (Math.random() * colores.length);
                             System.out.print(colores[colorRandom] + caracter);
                         } else {
@@ -160,8 +168,8 @@ public class Animated {
                     }
                     espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
                     for (int k = 0; k < espacios; k++) {
-                        if (Math.random() < 0.05 && nieve)
-                            System.out.print(WHITE_BOLD_BRIGHT+"*");
+                        if (Math.random() < 0.005 && nieve)
+                            System.out.print(WHITE_BOLD_BRIGHT+CARACTER_NIEVE);
                         else
                             System.out.print(" ");
                     }
@@ -180,12 +188,12 @@ public class Animated {
                 int espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                 for (int k = 0; k < espacios; k++) {
                     if (Math.random() < 0.05 && nieve)
-                        System.out.print(WHITE_BOLD_BRIGHT+"*");
+                        System.out.print(WHITE_BOLD_BRIGHT+CARACTER_NIEVE);
                     else
                         System.out.print(" ");
                 }
                 for (int j = 0; j < 3; j++) {
-                    System.out.print(BROWN+"*");
+                    System.out.print(BROWN+CARACTER_TRONCO);
                 }
                 if (fuego) {
                     for (int x = 0; x < espacios; x++) {
@@ -200,13 +208,13 @@ public class Animated {
                 int espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                 for (int k = 0; k < espacios; k++) {
                     if (Math.random() < 0.05 && nieve)
-                        System.out.print(WHITE_BOLD_BRIGHT+"*");
+                        System.out.print(WHITE_BOLD_BRIGHT+CARACTER_NIEVE);
                     else
                         System.out.print(" ");
                 }
 
                 for (int j = 0; j < 3; j++) {
-                    System.out.print(BROWN+"*");
+                    System.out.print(BROWN+CARACTER_TRONCO);
                 }
                 if (fuego) {
                     for (int k = 0; k < espacios; k++) {
@@ -219,10 +227,9 @@ public class Animated {
                         System.out.print(BRICK_RED + chimenea[i]);
                     } else {
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
                                 int colorRandom = (int) (Math.random() * colores.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
@@ -240,12 +247,12 @@ public class Animated {
                 int espacios = (triangulo.length - 4) + (ramas - 1) + 5;
                 for (int k = 0; k < espacios; k++) {
                     if (Math.random() < 0.05 && nieve)
-                        System.out.print(WHITE_BOLD_BRIGHT+"*");
+                        System.out.print(WHITE_BOLD_BRIGHT+CARACTER_NIEVE);
                     else
                         System.out.print(" ");
                 }
                 for (int j = 0; j < 5; j++) {
-                    System.out.print(BROWN+"*");
+                    System.out.print(BROWN+CARACTER_TRONCO);
                 }
                 if (fuego) {
                     for (int k = 0; k < espacios; k++) {
@@ -258,10 +265,9 @@ public class Animated {
                         System.out.print(BRICK_RED + chimenea[i]);
                     } else {
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
                                 int colorRandom = (int) (Math.random() * colores.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
@@ -279,12 +285,12 @@ public class Animated {
                 int espacios = (triangulo.length - 5) + (ramas - 1) + 5;
                 for (int k = 0; k < espacios; k++) {
                     if (Math.random() < 0.05 && nieve)
-                        System.out.print(WHITE_BOLD_BRIGHT+"*");
+                        System.out.print(WHITE_BOLD_BRIGHT+CARACTER_NIEVE);
                     else
                         System.out.print(" ");
                 }
                 for (int j = 0; j < 6; j++) {
-                    System.out.print(BROWN+"*");
+                    System.out.print(BROWN+CARACTER_TRONCO);
                 }
                 if (fuego) {
                     for (int k = 0; k < espacios; k++) {
@@ -297,10 +303,9 @@ public class Animated {
                         System.out.print(BRICK_RED + chimenea[i]);
                     } else {
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
                                 int colorRandom = (int) (Math.random() * colores.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
@@ -327,14 +332,14 @@ public class Animated {
                     espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                     System.out.print(" ".repeat(espacios));
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
                 } else {
                     espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo + 5;
-                    System.out.print(RED+"*"+RESET+"*"+RED+"*");
+                    System.out.print(RED+CARACTER_REGALO+RESET+CARACTER_REGALO+RED+CARACTER_REGALO);
                     System.out.print(" ".repeat(espacios));
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
                 }
                 System.out.println(RESET);
@@ -343,14 +348,12 @@ public class Animated {
             for (int i = 0; i < 3; i++) {
                 char lazo;
                 if (ramas == 0)
-                    lazo = ' ';
-                else
-                    lazo = 'ღ';
+                    CARACTER_LAZO = ' ';
                 if (i == 0){
                     int espacios = (triangulo.length - 2) + (ramas - 1)  + 5;
                     System.out.print(" ".repeat(espacios));
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
                     if (fuego) {
                         for (int x = 0; x < espacios; x++) {
@@ -363,22 +366,21 @@ public class Animated {
                     int espacios = (triangulo.length - 2) + (ramas - 1) - largoLazo - 2  + 5;
                     System.out.print(" ".repeat(espacios));
 
-                    System.out.print(RESET+lazo+"  ");
+                    System.out.print(RESET+CARACTER_LAZO+"  ");
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
-                    System.out.print("  "+RESET+lazo);
+                    System.out.print("  "+RESET+CARACTER_LAZO);
                     if (fuego) {
                         for (int x = 0; x < espacios; x++) {
                             System.out.print(" ");
                         }
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
-                                int colorRandom = (int) (Math.random() * colores.length);
+                                int colorRandom = (int) (Math.random() * colorFuego.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
                             } else {
                                 System.out.print(RED + caracter);
@@ -391,22 +393,21 @@ public class Animated {
                     int espacios = (triangulo.length - 2) + (ramas - 1) - largoRegalo - 1 + 5;
                     System.out.print(" ".repeat(espacios));
 
-                    System.out.print(DARK_RED+"▓"+RESET+"▓"+DARK_RED+"▓ ");
+                    System.out.print(RED+CARACTER_REGALO+RESET+CARACTER_REGALO+RED+CARACTER_REGALO+" ");
                     for (int j = 0; j < 3; j++) {
-                        System.out.print(BROWN+"*");
+                        System.out.print(BROWN+CARACTER_TRONCO);
                     }
-                    System.out.print(" "+DARK_BLUE+"▓"+RESET+"▓"+DARK_BLUE+"▓");
+                    System.out.print(" "+BLUE+CARACTER_REGALO+RESET+CARACTER_REGALO+BLUE+CARACTER_REGALO);
                     if (fuego) {
                         for (int x = 0; x < espacios; x++) {
                             System.out.print(" ");
                         }
                         System.out.print(BRICK_RED + chimenea[i]);
-                        String foc = "WWWW";
                         String[] colorFuego = {RED, ORANGE, DARK_ORANGE};
-                        for (int k = 0; k < foc.length(); k++) {
-                            char caracter = foc.charAt(k);
+                        for (int k = 0; k < FOC.length(); k++) {
+                            char caracter = FOC.charAt(k);
                             if (Math.random() < 0.5) {
-                                int colorRandom = (int) (Math.random() * colores.length);
+                                int colorRandom = (int) (Math.random() * colorFuego.length);
                                 System.out.print(colorFuego[colorRandom] + caracter);
                             } else {
                                 System.out.print(RED + caracter);
@@ -430,7 +431,7 @@ public class Animated {
             suelo += 2;
         }
         for (int i = 0; i < suelo-2; i++) {
-            System.out.print(DARK_ORANGE+"▀");
+            System.out.print(DARK_ORANGE+CARACTER_SUELO);
         }
         System.out.println(RESET);
         int espacios = (suelo/2) - (name.length()/2);
