@@ -102,6 +102,7 @@ public class ArbolNavidad {
      * @param star Si tiene estrella o no
      */
     static void ramas(int ramas, boolean star){
+        int espacios;
         for (int i = 0; i < ramas; i++) {
             String Colorbase;
             if (i % 2== 0)
@@ -110,8 +111,9 @@ public class ArbolNavidad {
                 Colorbase = DARK_GREEN;
 
             if (i == 0){
+
                 for (int j = 0; j < triangulo.length; j++) {
-                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
+                    espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
@@ -123,7 +125,7 @@ public class ArbolNavidad {
                 }
             } else {
                 for (int j = 0; j < triangulo.length; j++) {
-                    int espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
+                    espacios = (triangulo.length - 1 - j) + (ramas - 1 - i) + 5;
                     for (int x = 0; x < espacios; x++) {
                         System.out.print(" ");
                     }
@@ -187,9 +189,10 @@ public class ArbolNavidad {
      * depende del tamaño de la rama dibuja un tronco u otro
      */
     static void tronco(){
+        int espacios;
         if (ramas <= 1){
             for (int i = 0; i < 2; i++) {
-                int espacios = (triangulo.length - 2) + (ramas - 1) + 5;
+                espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                 for (int x = 0; x < espacios; x++) {
                     System.out.print(" ");
                 }
@@ -206,7 +209,7 @@ public class ArbolNavidad {
             }
         } else {
             for (int i = 0; i < 3; i++) {
-                int espacios = (triangulo.length - 2) + (ramas - 1) + 5;
+                espacios = (triangulo.length - 2) + (ramas - 1) + 5;
                 for (int x = 0; x < espacios; x++) {
                     System.out.print(" ");
                 }
