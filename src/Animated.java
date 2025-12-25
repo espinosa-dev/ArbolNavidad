@@ -21,7 +21,7 @@ public class Animated {
     private static final char CARACTER_SUELO = '▀';
     private static String[] triangulo;
 
-    private static Scanner scn = new Scanner(System.in);
+    private static final Scanner scn = new Scanner(System.in);
     private static int ramas;
     private static boolean estrella = true;
     private static boolean tronco = true;

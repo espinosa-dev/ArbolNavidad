@@ -12,17 +12,16 @@ public class ArbolNavidad {
      */
     public static String[] colores = {RED, BLUE, ORANGE};
     /**
-     * Array del triangulo principal
+     * Array del triángulo principal
      */
     private static String[] triangulo = {"♠","♠♠♠","♠♠♠♠♠","♠♠♠♠♠♠♠"};
     private static String[] chimenea = {"▓▀▀▀▀▓","▓","▓"};
     private static final char CARACTER_TRONCO = '█';
     private static final char CARACTER_HOJA = '♠';
     private static final char CARACTER_ESTRELLA = '★';
-    private static final char CARACTER_NIEVE = '❅';
     private static final char CARACTER_REGALO = '▓';
     private static final String FOC = "WWWW";
-    private static char CARACTER_LAZO= 'ღ';
+    private static final char CARACTER_LAZO= 'ღ';
     private static final char CARACTER_SUELO = '▀';
     /**
      * Scanner para recibir datos del usuario
